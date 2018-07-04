@@ -1,0 +1,10 @@
+- name: Deploy 3tier app on osp
+  hosts: localhost
+  gather_facts: yes
+  sudo: yes
+  roles:
+    - osp-facts
+    - common
+    - haproxy
+    - postgresql
+    - app
