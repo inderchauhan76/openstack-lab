@@ -1,11 +1,15 @@
 ---
 # tasks file for postgresql
+- name: delete data directory
+  file:
+    state: absent
+    path: "{{ postgresql_data_dir }}"
+
 - name: Install postgresql
   yum:
     name: "{{ item }}"
     state: installed
   with_items: "{{ postgresql_packages }}"
-
 
 - name: Ensure PostgreSQL data directory exists.
   file:
@@ -14,14 +18,9 @@
     state: directory
     mode: 0700
 
-#- name: delete data directory
-#  file:
-#    state: absent
-#    path: "{{ postgresql_data_dir }}"
-
 - name: Check if PostgreSQL database is initialized.
   stat:
-    path: "{{ postgresql_data_dir }}"
+    path: "{{ postgresql_data_dir }}/PG_VERSION"
   register: pgdata_dir_version
 
 - name: Ensure PostgreSQL database is initialized.

@@ -1,0 +1,16 @@
+---
+# tasks file for osp-infra-delete
+- name: Get OS server facts
+  os_server_facts:
+    cloud: ospcloud
+    region_name: RegionOne
+  register: result
+#- debug:
+#    var: result
+
+- name: Delete OSP instances
+  os_server:
+    cloud: ospcloud
+    name: "{{ item.name }}"
+    state: absent
+  loop: "{{result.ansible_facts.openstack_servers}}"
