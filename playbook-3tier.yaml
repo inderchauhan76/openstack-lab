@@ -1,5 +1,5 @@
 - name: Deploy 3tier app on osp
-  hosts: jumphost
+  hosts: all
   gather_facts: yes
   sudo: yes
   roles:
