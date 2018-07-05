@@ -6,14 +6,6 @@
     - osp-facts
 
 - name: setup app tier
-  hosts: frontends
-  become: yes
-  gather_facts: true
-  roles:
-    - common
-    - haproxy
-
-- name: setup app tier
   hosts: appdbs
   become: yes
   gather_facts: true
@@ -28,3 +20,11 @@
   roles:
     - common
     - app
+
+- name: setup app tier
+  hosts: frontends
+  become: yes
+  gather_facts: true
+  roles:
+    - common
+    - haproxy
