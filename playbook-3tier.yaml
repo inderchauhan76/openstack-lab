@@ -1,10 +1,30 @@
 - name: Deploy 3tier app on osp
-  hosts: all
+  hosts: jumpbox
   gather_facts: yes
   sudo: yes
   roles:
     - osp-facts
+
+- name: setup app tier
+  hosts: frontends
+  become: yes
+  gather_facts: true
+  roles:
     - common
     - haproxy
+
+- name: setup app tier
+  hosts: appdbs
+  become: yes
+  gather_facts: true
+  roles:
+    - common
     - postgresql
+
+- name: setup app tier
+  hosts: apps
+  become: yes
+  gather_facts: true
+  roles:
+    - common
     - app

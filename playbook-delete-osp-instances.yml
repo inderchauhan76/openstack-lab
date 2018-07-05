@@ -1,0 +1,6 @@
+- name: Delete OSP instances
+  hosts: jumpbox
+  gather_facts: false
+  become: true
+  roles:
+    - osp-infra-delete 
