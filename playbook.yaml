@@ -5,6 +5,7 @@
   roles:
     - osp-network
     - osp-keypair
+    - osp-flavor
     - osp-securitygroup
     - osp-facts
   tasks:
