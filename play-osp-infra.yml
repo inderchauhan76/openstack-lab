@@ -1,0 +1,10 @@
+- name: Playbook to run openstack roles through jumphost
+  hosts: all
+  gather_facts: yes
+  sudo: yes
+  roles:
+    - osp-network
+    - osp-keypair
+    - osp-flavor
+    - osp-securitygroup
+    - osp-workstation
