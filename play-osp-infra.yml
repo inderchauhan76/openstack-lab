@@ -1,5 +1,5 @@
 - name: Playbook to run openstack roles through jumphost
-  hosts: jumpbox
+  hosts: all
   gather_facts: yes
   sudo: yes
   roles:
